@@ -1,0 +1,6 @@
+class Players::Human < Player
+  def move(a)
+    puts "Please enter 1-9:"
+    gets.chomp
+  end
+end
