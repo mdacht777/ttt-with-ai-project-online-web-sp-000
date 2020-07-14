@@ -96,7 +96,7 @@ class Game
   end
 
 def turn
-  puts current_player.token
+  puts "#{current_player.token}'s turn!'
   input = current_player.move(board).to_i
   if board.valid_move?(input.to_s)
     board.update(input, current_player)
