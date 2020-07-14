@@ -274,7 +274,7 @@ describe 'Game' do
       game.play
     end
 
-    xit 'stops playing if someone has won' do
+    it 'stops playing if someone has won' do
       game = Game.new
       game.board.cells = ["X", "X", "X", " ", " ", " ", " ", " ", " "]
 
@@ -285,7 +285,7 @@ describe 'Game' do
       game.play
     end
 
-    xit 'congratulates the winner X' do
+    it 'congratulates the winner X' do
       game = Game.new
       game.board.cells = ["X", "X", "X", " ", " ", " ", " ", " ", " "]
       allow($stdout).to receive(:puts)
@@ -295,7 +295,7 @@ describe 'Game' do
       game.play
     end
 
-    xit 'congratulates the winner O' do
+    it 'congratulates the winner O' do
       game = Game.new
       game.board.cells = [" ", " ", " ", " ", " ", " ", "O", "O", "O"]
 
@@ -306,7 +306,7 @@ describe 'Game' do
       game.play
     end
 
-    xit 'stops playing in a draw' do
+    it 'stops playing in a draw' do
       game = Game.new
       game.board.cells = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
 
@@ -317,7 +317,7 @@ describe 'Game' do
       game.play
     end
 
-    xit 'prints "Cat\'s Game!" on a draw' do
+    it 'prints "Cat\'s Game!" on a draw' do
       game = Game.new
       game.board.cells = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
 

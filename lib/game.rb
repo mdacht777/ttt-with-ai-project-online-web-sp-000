@@ -90,63 +90,42 @@ class Game
       board.cells[won?[0]]
     end
   end
-  def turn1
-    puts "Please enter 1-9:"
-    # input = gets.strip
-    i = current_player.move(board)
-  if i.to_i.between?(1, 9) == false
-    turn
-  elsif board.valid_move?(i)
-      board.update(i, current_player)
-      board.display
-    # else
-    #   turn
-    end
-  end
+#   def turn1
+#     puts "Please enter 1-9:"
+#     # input = gets.strip
+#     i = current_player.move(board)
+#   if i.to_i.between?(1, 9) == false
+#     turn
+#   elsif board.valid_move?(i)
+#       board.update(i, current_player)
+#       board.display
+#     # else
+#     #   turn
+#     end
+#   end
 def turn
   puts "It's now #{current_player.token}'s turn."
 input = current_player.move(board).to_i
 if board.valid_move?(input.to_s)
   board.update(input, current_player)
-  system('clear')
-  puts "Game #{@counter}" if @wargame
-  board.display
 elsif input.between?(1, 9) == false
-  puts "That is an invalid move"
   turn
 else
-  puts "Whoops! Looks like that position is taken"
   turn
 end
 end
-  def play1
-    board.reset!
-    # Game play asks for players input on a turn of the game
-    # Game play checks if the game is over after every turn
-    until over?
-      turn
-    end
-    # turn
-    if won?
-      puts("Congratulations #{winner}!")
-    elsif draw?
-      puts "WINNER: NONE"
-    else
-      # play
-    end
-    # Game play stops playing if someone has won
-  end
   def play
-      board.reset!
-      system('clear')
-      board.display
-      until over?
+      # board.reset!
+      # system('clear')
+      # board.display
+      while !over? and !draw?
         turn
       end
+      # over?
       if draw?
-        puts "WINNER: NONE"
+        puts "Cat's Game!"
       elsif won?
-        puts "WINNER: #{winner}"
+        puts "Congratulations #{winner}!"
       end
     end
 end
