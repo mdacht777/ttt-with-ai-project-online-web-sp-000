@@ -13,11 +13,28 @@ class Board
     @cells.count{|token| token == "X" || token == "O"}
   end
   def display
-    puts " #{@cells[0]} | #{@cells[1]} | #{@cells[2]} "
-    puts "-----------"
-    puts " #{@cells[3]} | #{@cells[4]} | #{@cells[5]} "
-    puts "-----------"
-    puts " #{@cells[6]} | #{@cells[7]} | #{@cells[8]} "
+    $stdout.sync = true
+    i=1
+    puts "-------------"
+    cells.each_with_index {|cell,index|
+      print "|" if i==1
+      if cell==" "
+       print " #{index+1} |"
+      else
+        print " #{cell} |"
+      end
+      i+=1
+      if i==4
+        puts ""
+        puts "-------------"
+        i=1
+      end
+     }
+    # puts " #{@cells[0]} | #{@cells[1]} | #{@cells[2]} "
+    # puts "-----------"
+    # puts " #{@cells[3]} | #{@cells[4]} | #{@cells[5]} "
+    # puts "-----------"
+    # puts " #{@cells[6]} | #{@cells[7]} | #{@cells[8]} "
   end
 # Define your WIN_COMBINATIONS constant
 WIN_COMBINATIONS = [
