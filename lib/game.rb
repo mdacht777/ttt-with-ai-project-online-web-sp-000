@@ -120,5 +120,6 @@ class Game
       elsif won?
         puts "Congratulations #{winner}!"
       end
+      puts "This game took #{board.turn_count} turns!"
     end
 end

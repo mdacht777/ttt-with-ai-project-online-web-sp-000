@@ -1,43 +1,41 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
-puts "Welcome to Tic Tac Toe!"
+puts "Shall we play Tic Tac Toe? The only winning move is not to play!"
 
 def start
-  puts "How many players? (0, 1 or 2)"
-  input = gets.strip
-  case input
+  puts "How many players? (0, 1, 2, or q to quit)"
+  i = gets.strip
+  case i
     when "0"
-      Game.new(Players::Computer.new("X"), Players::Computer.new("O")).play
-      puts "That was fun! Would you like to play again?"
-      loop_around
+      a=Game.new(Players::Computer.new("X"), Players::Computer.new("O"))
+      a.play
+      restart
     when "1"
-      Game.new(Players::Human.new("X"), Players::Computer.new("O")).play
-      puts "That was fun! Would you like to play again?"
-      loop_around
+      a=Game.new(Players::Human.new("X"), Players::Computer.new("O"))
+      a.play
+      restart
     when "2"
-      Game.new(Players::Human.new("X"), Players::Human.new("O")).play
-      puts "That was fun! Would you like to play again?"
-      loop_around
-    when "wargames"
-      Game.new(Players::Computer.new("X"), Players::Computer.new("O"), Board.new, true).wargames
-      puts "That was fun! Would you like to play again?"
-      loop_around
+      a=Game.new(Players::Human.new("X"), Players::Human.new("O"))
+      a.play
+      restart
+    when "q"
+      puts "Maybe a nice game of chess next time!"
     else
-      puts "That is an invalid entry"
+      puts "Try again..."
       start
   end
 end
-def loop_around
-  puts "Please input y or n"
-  answer = gets.strip
-  case answer
+def restart
+  puts "Shall we play again? (y/n)"
+  i = gets.strip
+  case i
     when "y"
       start
     when "n"
-      puts "Goodbye!"
+      puts "Maybe a nice game of chess next time!"
     else
-      loop_around
+      restart
   end
 end
 start
