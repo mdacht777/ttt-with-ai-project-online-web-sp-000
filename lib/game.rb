@@ -91,5 +91,35 @@ class Game
     end
   end
   def turn
+    puts "Please enter 1-9:"
+    # input = gets.strip
+    i = current_player.move(board)
+    if board.valid_move?(i)
+      board.update(i, current_player)
+      board.display
+    elsif i.to_i.between?(1, 9) == false
+      turn
+    # else
+    #   turn
+    end
+  end
+  def play
+    # Game play asks for players input on a turn of the game
+    # Game play checks if the game is over after every turn
+    board.reset!
+    board.display
+    until over?
+      break if won?
+      break if draw?
+      turn
+    end
+    # Game play stops playing if someone has won
+    if draw?
+      puts "WINNER: NONE"
+    elsif won?
+# binding.pry
+      puts "WINNER: #{winner}"
+      exit
+    end
   end
 end

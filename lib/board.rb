@@ -67,7 +67,7 @@ def update(input,current_player)
     move(index, current_player.token)
     # display
   # else
-  #   position(a)
+  #   Game.turn
   end
 end
 
