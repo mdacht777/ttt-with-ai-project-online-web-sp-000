@@ -119,7 +119,7 @@ class Game
     elsif won?
 # binding.pry
       puts "WINNER: #{winner}"
-      exit
+      board.reset!
     end
   end
 end
