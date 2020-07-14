@@ -94,32 +94,46 @@ class Game
     puts "Please enter 1-9:"
     # input = gets.strip
     i = current_player.move(board)
-    if board.valid_move?(i)
+  if i.to_i.between?(1, 9) == false
+    turn
+  elsif board.valid_move?(i)
       board.update(i, current_player)
       board.display
-    elsif i.to_i.between?(1, 9) == false
-      turn
     # else
     #   turn
     end
   end
+def turn
+  puts "It's now #{current_player.token}'s turn."
+input = current_player.move(board).to_i
+if board.valid_move?(input.to_s)
+  board.update(input, current_player)
+  system('clear')
+  puts "Game #{@counter}" if @wargame
+  board.display
+elsif input.between?(1, 9) == false
+  puts "That is an invalid move"
+  turn
+else
+  puts "Whoops! Looks like that position is taken"
+  turn
+end
+end
   def play
+    board.reset!
     # Game play asks for players input on a turn of the game
     # Game play checks if the game is over after every turn
-    board.reset!
-    board.display
     until over?
-      break if won?
-      break if draw?
       turn
     end
-    # Game play stops playing if someone has won
-    if draw?
+    # turn
+    if won?
+      puts("Congratulations #{winner}!")
+    elsif draw?
       puts "WINNER: NONE"
-    elsif won?
-# binding.pry
-      puts "WINNER: #{winner}"
-      board.reset!
+    else
+      # play
     end
+    # Game play stops playing if someone has won
   end
 end
