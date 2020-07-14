@@ -29,6 +29,7 @@ class Game
     # binding.pry
     turn_count % 2 == 0 ? player_1 : player_2
   end
+
   def won?
   WIN_COMBINATIONS.each do |win_combination|
     # win_combination is a 3 element array of indexes that compose a win, [0,1,2]
@@ -47,6 +48,7 @@ class Game
   end
   return false
   end
+
   def full?
   board.cells.each do |value|
     #puts value
@@ -67,6 +69,7 @@ class Game
     end
     return true
   end
+
   def over?
   #  puts full?(board)
   #  puts won?(board)
@@ -85,35 +88,24 @@ class Game
     end
     return false
   end
+
   def winner
     if won?
       board.cells[won?[0]]
     end
   end
-#   def turn1
-#     puts "Please enter 1-9:"
-#     # input = gets.strip
-#     i = current_player.move(board)
-#   if i.to_i.between?(1, 9) == false
-#     turn
-#   elsif board.valid_move?(i)
-#       board.update(i, current_player)
-#       board.display
-#     # else
-#     #   turn
-#     end
-#   end
+
 def turn
-  puts "It's now #{current_player.token}'s turn."
-input = current_player.move(board).to_i
-if board.valid_move?(input.to_s)
-  board.update(input, current_player)
-elsif input.between?(1, 9) == false
-  turn
-else
-  turn
+  input = current_player.move(board).to_i
+  if board.valid_move?(input.to_s)
+    board.update(input, current_player)
+  elsif input.between?(1, 9) == false
+    turn
+  else
+    turn
+  end
 end
-end
+
   def play
       # board.reset!
       # system('clear')
