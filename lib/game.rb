@@ -99,6 +99,7 @@ def turn
   puts "#{current_player.token}'s turn!"
   input = current_player.move(board).to_i
   if board.valid_move?(input.to_s)
+    puts "#{current_player.token} chooses #{input}"
     board.update(input, current_player)
   elsif input.between?(1, 9) == false
     turn
