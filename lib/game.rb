@@ -90,7 +90,7 @@ class Game
       board.cells[won?[0]]
     end
   end
-  def turn
+  def turn1
     puts "Please enter 1-9:"
     # input = gets.strip
     i = current_player.move(board)
@@ -119,7 +119,7 @@ else
   turn
 end
 end
-  def play
+  def play1
     board.reset!
     # Game play asks for players input on a turn of the game
     # Game play checks if the game is over after every turn
@@ -136,4 +136,17 @@ end
     end
     # Game play stops playing if someone has won
   end
+  def play
+      board.reset!
+      system('clear')
+      board.display
+      until over?
+        turn
+      end
+      if draw?
+        puts "WINNER: NONE"
+      elsif won?
+        puts "WINNER: #{winner}"
+      end
+    end
 end
